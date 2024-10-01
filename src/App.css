@@ -1,38 +1,129 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  background-color: #000; 
+  color: #fff; 
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  padding: 20px;
+}
+
+.timer-circle {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 20px 0;
+}
+
+.timer-svg {
+  transform: rotate(-90deg); 
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #333; 
+  stroke-width: 12;
+}
+
+.circle-progress {
+  fill: none;
+  stroke: #ff9f00; 
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-dasharray: 565.48; 
+  stroke-dashoffset: 565.48; 
+  transition: stroke-dashoffset 1s linear;
+}
+
+.time-display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em; 
+  color: #ff9f00; 
+  font-weight: bold;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+button {
+  font-size: 1.2em;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: none;
+  background-color: #ff9f00;
   color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background-color: #ff7b00;
+  transform: translateY(-2px);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button:disabled {
+  background-color: #333;
+  cursor: not-allowed;
+}
+
+/* Стили стрелок */
+.clock-face {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.hand {
+  position: absolute;
+  background-color: #007bff;
+  transform-origin: 50% 100%; 
+  transition: transform 0.5s linear;
+}
+
+.hand.hour {
+  width: 5px;
+  height: 30%;
+  top: 20%;
+  left: 50%;
+  transform-origin: bottom;
+}
+
+.hand.minute {
+  width: 3px;
+  height: 40%;
+  top: 10%;
+  left: 50%;
+  transform-origin: bottom;
+}
+
+.hand.second {
+  width: 2px;
+  height: 45%;
+  background-color: #ff4c4c;
+  top: 5%;
+  left: 50%;
+  transform-origin: bottom;
+}
+
+.clock-center {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #007bff;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
